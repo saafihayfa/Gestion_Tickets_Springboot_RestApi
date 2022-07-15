@@ -17,8 +17,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.Hayfa.GestionTickets.Service.HdkUserService;
 import com.Hayfa.GestionTickets.entities.HdkUser;
 
-
-
 @RestController
 @RequestMapping("/api")
 public class HdkUserController {
@@ -32,13 +30,19 @@ public class HdkUserController {
 		return ResponseEntity.ok().body(userservice.getUsers());
 
 	}
-	
+
 	@GetMapping("users/{username}")
 	@ResponseBody
-	public HdkUser getuser(@PathVariable("username") String u) {
-		return userservice.getUser(u);
+	public HdkUser getuser(@PathVariable("username") String name) {
+		return userservice.getUser(name);
 	}
-	
+
+	@GetMapping("users/{usermail}")
+	@ResponseBody
+	public HdkUser getusermail(@PathVariable("usermail") String mail) {
+		return userservice.getUser(mail);
+	}
+
 	@PostMapping("/adduser")
 	public ResponseEntity<HdkUser> adduser(@RequestBody HdkUser u) {
 		URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/adduser").toString());

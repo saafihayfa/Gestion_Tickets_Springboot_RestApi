@@ -28,8 +28,20 @@ public class HdkUserServiceImpl implements HdkUserService {
 
 	@Override
 	public List<HdkUser> getUsers() {
-		
+
 		return userrepo.findAll();
 	}
+
+	@Override
+	public HdkUser getuserMail(String userMail) {
+
+		return userrepo.findByuserMail(userMail);
+	}
+
+	//@Override
+	//public Boolean existsByuserMail(String userMail) {
+
+	//	return null;
+	//}
 
 }

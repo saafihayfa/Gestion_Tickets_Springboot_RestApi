@@ -17,11 +17,11 @@ public class HdkUser implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private BigDecimal idUser;
-	
+
 	private BigDecimal idEntite;
 	private BigDecimal idTiers;
 	private BigDecimal version;
@@ -45,12 +45,13 @@ public class HdkUser implements java.io.Serializable {
 	public HdkUser() {
 	}
 
-	public HdkUser(BigDecimal idUser) {
-		this.idUser = idUser;
+	public HdkUser(String userName, String userPwd, String userMail) {
+		this.idUser = idUser;this.userName = userName;
+		this.userPwd = userPwd;
+		this.userMail = userMail;
+
 	}
 
-	
-	
 	public HdkUser(BigDecimal idEntite, BigDecimal idTiers, BigDecimal version, String userName, String userLogin,
 			String userPwd, Date modifiedDate, Date createdDate, Character isBlocked, Character isActive,
 			BigDecimal userFunction, String userMail, String userAdress, String userVille, byte[] userLogo,
