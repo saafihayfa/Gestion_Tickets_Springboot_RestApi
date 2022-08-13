@@ -22,10 +22,10 @@ public class GestionTicketsApplication {
 	@PostConstruct
 	public void initUsers() {
 		List<HdkUser> users = Stream.of
-				(new HdkUser( "hayfa", "123456", "saafi1.hayfa@gmail.com")
+				(new HdkUser( "saafi", "1234", "saafihay@gmail.com")
 				).collect(Collectors.toList());
 		userrepository.saveAll(users);
-	}*/
+	} */
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestionTicketsApplication.class, args);

@@ -52,32 +52,25 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	 @Override
    protected void configure(HttpSecurity http) throws Exception {
-	        http.csrf().disable().authorizeRequests().antMatchers("/api/authenticate")
+	        http.csrf().disable().authorizeRequests().antMatchers("/api/authenticate" , "/api/adduser")
                .permitAll().anyRequest().authenticated()
 	                .and().exceptionHandling().and().sessionManagement()
 	                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);;
    }
+	 
+	 @Bean
+	    CorsConfigurationSource corsConfigurationSource() {
+	        CorsConfiguration configuration = new CorsConfiguration();
+	        configuration.setAllowedOrigins(Arrays.asList("*"));
+	        configuration.setAllowedMethods(Arrays.asList("*"));
+	        configuration.setAllowedHeaders(Arrays.asList("*"));
+	        configuration.setAllowCredentials(true);
+	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	        source.registerCorsConfiguration("/**", configuration);
+	        return source;
+	    }
 
-	/*@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable();
-		System.out.println("i m here") ;
-		http.authorizeRequests().antMatchers("/api/authenticate").permitAll() 
-		
-		.anyRequest().authenticated();
-		
-	}
 
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("*"));
-		configuration.setAllowedMethods(Arrays.asList("*"));
-		configuration.setAllowedHeaders(Arrays.asList("*"));
-		configuration.setAllowCredentials(true);
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
-		return source;
-	}  */
+	
 }
