@@ -9,12 +9,34 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import com.Hayfa.GestionTickets.Repos.HdkUserRepository;
 
 import com.Hayfa.GestionTickets.entities.HdkUser;
 
+
 @SpringBootApplication
 public class GestionTicketsApplication {
+	
+	
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurer() {
+//			 
+//			
+//			public void addCorsMappings (CorsRegistry  Registry) {
+//				Registry.addMapping(pathPattern:"/*").allowedHeaders("*").allowedOrigins.allowedMethods("*").
+//				allowCredentials (true);
+//			}
+//			
+//		};
+//		
+//		
+//	}
 
 	/*@Autowired
 	private HdkUserRepository userrepository;

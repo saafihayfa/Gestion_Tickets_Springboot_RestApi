@@ -15,7 +15,8 @@ import com.Hayfa.GestionTickets.Config.jwtutil;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
-public class AuthController {
+public class AuthController // implements java.io.Serializable 
+{
 
 	@Autowired
 	private jwtutil jwtutil;
@@ -30,6 +31,7 @@ public class AuthController {
      
 	
 	 @PostMapping("/authenticate")
+	 //@CrossOrigin(origins="http://localhost:8087/api/authenticate")
 	    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
 	        try {
 	            authenticationManager.authenticate(
@@ -39,6 +41,7 @@ public class AuthController {
 	            //throw new Exception("inavalid username/password");
 	        }
 	        return jwtutil.generateToken(authRequest.getUserName());
+	       
 	    }
 
 }

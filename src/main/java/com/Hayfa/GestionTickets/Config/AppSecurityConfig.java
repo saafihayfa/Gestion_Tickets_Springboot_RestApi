@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.Hayfa.GestionTickets.Service.CustomUserDetailsService;
 import com.Hayfa.GestionTickets.Filter.JwtFilter;
@@ -51,6 +52,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.cors().disable();
 		http.csrf().disable().authorizeRequests().antMatchers("/api/authenticate", "/api/adduser").permitAll()
 				.anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -69,5 +71,19 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
+	/*@Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new
+                UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        return source;
+    }
+
+
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "authenticate")
+                .exposedHeaders("Authorization");
+    }*/
 
 }
