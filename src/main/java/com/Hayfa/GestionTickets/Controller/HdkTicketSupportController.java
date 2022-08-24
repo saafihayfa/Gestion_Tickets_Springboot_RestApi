@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Hayfa.GestionTickets.Service.HdkTicketSupportService;
 import com.Hayfa.GestionTickets.entities.HdkTicketSupport;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class HdkTicketSupportController {

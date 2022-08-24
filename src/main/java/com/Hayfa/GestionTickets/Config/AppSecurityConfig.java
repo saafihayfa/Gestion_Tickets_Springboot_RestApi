@@ -26,8 +26,61 @@ import com.Hayfa.GestionTickets.Filter.JwtFilter;
 @EnableWebSecurity
 @Configuration
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	   @Autowired
+	   private CustomUserDetailsService userDetailsService;
+	
+		@Autowired
+		private JwtFilter jwtFilter;
 
-	@Autowired
+		
+		@Override
+		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+			auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+		}
+		
+		
+		@Bean
+		public PasswordEncoder passwordEncoder() {
+			return NoOpPasswordEncoder.getInstance();
+		}
+
+		@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+		@Override
+		public AuthenticationManager authenticationManagerBean() throws Exception {
+			return super.authenticationManagerBean();
+		}
+
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.cors().and().csrf().disable().authorizeRequests().antMatchers("/api/authenticate", "/api/adduser").permitAll()
+			.anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
+			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+	http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+	
+		}
+		
+		@Bean
+		CorsConfigurationSource corsConfigurationSource() {
+			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+			CorsConfiguration config = new CorsConfiguration();
+			config.addAllowedOrigin("*");
+			  config.addAllowedHeader("*");
+			  config.addAllowedMethod("OPTIONS");
+			  config.addAllowedMethod("HEAD");
+			  config.addAllowedMethod("GET");
+			  config.addAllowedMethod("PUT");
+			  config.addAllowedMethod("POST");
+			  config.addAllowedMethod("DELETE");
+			  config.addAllowedMethod("PATCH");
+			source.registerCorsConfiguration("/**", config);
+			return source;
+		}
+	
+	
+
+
+	/*@Autowired
 	private CustomUserDetailsService userDetailsService;
 
 	@Autowired
@@ -52,6 +105,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.cors().and();
 		http.cors().disable();
 		http.csrf().disable().authorizeRequests().antMatchers("/api/authenticate", "/api/adduser").permitAll()
 				.anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
@@ -71,19 +125,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
-	/*@Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        UrlBasedCorsConfigurationSource source = new
-                UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-        return source;
-    }
+*/
 
-
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
-                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "authenticate")
-                .exposedHeaders("Authorization");
-    }*/
-
-}
+	}

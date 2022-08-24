@@ -13,7 +13,7 @@ public interface HdkUserRepository extends JpaRepository<HdkUser, BigDecimal> {
 
 	// Boolean existsByuserMail(String userMail);
 
-	HdkUser findByuserMail(String userMail);
+	 HdkUser findByuserMail(String userMail);
 
 	 HdkUser findByUserName(String userName);
 

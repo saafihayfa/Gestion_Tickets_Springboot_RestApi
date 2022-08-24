@@ -41,6 +41,7 @@ public class HdkUser implements java.io.Serializable {
 	private Date startDate;
 	private Date endDate;
 	private BigDecimal userMobile;
+	private String usertoken ;
 
 	public HdkUser() {
 	}
@@ -247,6 +248,14 @@ public class HdkUser implements java.io.Serializable {
 
 	public void setIdEntite(BigDecimal idEntite) {
 		this.idEntite = idEntite;
+	}
+	
+	public String gettoken() {
+		return usertoken;
+	}
+
+	public void settoken(String token) {
+		this.usertoken = token;
 	}
 
 }

@@ -182,4 +182,13 @@ public class HdkTicketSupport implements java.io.Serializable {
 		this.dtModif = dtModif;
 	}
 
+	@Override
+	public String toString() {
+		return "HdkTicketSupport [idTicket=" + idTicket + ", version=" + version + ", idEntite=" + idEntite
+				+ ", idUser=" + idUser + ", idTypeTicket=" + idTypeTicket + ", periorite=" + periorite
+				+ ", attributedTo=" + attributedTo + ", title=" + title + ", numTicket=" + numTicket
+				+ ", commentTicket=" + commentTicket + ", description=" + description + ", dtCreate=" + dtCreate
+				+ ", dtModif=" + dtModif + ", status=" + status + "]";
+	}
+
 }
