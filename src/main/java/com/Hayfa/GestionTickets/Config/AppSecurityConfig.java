@@ -53,7 +53,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.cors().and().csrf().disable().authorizeRequests().antMatchers("/api/authenticate", "/api/adduser").permitAll()
+			http.cors().and().csrf().disable().authorizeRequests().antMatchers("/api/authenticate", "/api/adduser","/api/hdkticket","deletehdkticket/{id}").permitAll()
 			.anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
@@ -64,7 +64,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		CorsConfigurationSource corsConfigurationSource() {
 			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 			CorsConfiguration config = new CorsConfiguration();
-			config.addAllowedOrigin("*");
+			  config.addAllowedOrigin("*");
 			  config.addAllowedHeader("*");
 			  config.addAllowedMethod("OPTIONS");
 			  config.addAllowedMethod("HEAD");
