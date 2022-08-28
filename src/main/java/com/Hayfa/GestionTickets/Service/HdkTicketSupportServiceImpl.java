@@ -47,7 +47,7 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 	}
 
 	@Override
-	public HdkTicketSupport getTicketByStatus(Character s) {
+	public HdkTicketSupport getTicketByStatus(String s) {
 
 		return HdkTicket.findTicketByStatus(s);
 

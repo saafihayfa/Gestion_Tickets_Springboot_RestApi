@@ -21,7 +21,7 @@ public interface HdkTicketSupportService {
 
 	Optional<HdkTicketSupport> getTicket(BigDecimal id);
 	
-	HdkTicketSupport getTicketByStatus (Character s);
+	HdkTicketSupport getTicketByStatus (String s);
 	
 
 	List<HdkTicketSupport> getAllTickets();

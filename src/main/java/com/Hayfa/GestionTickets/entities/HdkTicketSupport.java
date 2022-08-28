@@ -31,14 +31,14 @@ public class HdkTicketSupport implements java.io.Serializable {
 	private String description;
 	private Date dtCreate;
 	private Date dtModif;
-	private Character status;
+	private String status;
 
 	public HdkTicketSupport() {
 	}
 
 	public HdkTicketSupport(BigDecimal version, BigDecimal idEntite, BigDecimal idUser, BigDecimal idTypeTicket,
 			BigDecimal periorite, BigDecimal attributedTo, String title, String numTicket, String commentTicket,
-			String description, Date dtCreate, Date dtModif, Character status) {
+			String description, Date dtCreate, Date dtModif, String status) {
 		super();
 		this.version = version;
 		this.idEntite = idEntite;
@@ -146,11 +146,11 @@ public class HdkTicketSupport implements java.io.Serializable {
 	}
 
 	@Column(name = "STATUS")
-	public Character getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Character status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

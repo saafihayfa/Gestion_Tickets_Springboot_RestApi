@@ -45,7 +45,7 @@ public class HdkTicketSupportController {
 
 	@GetMapping("hdkticket/{status}")
 	@ResponseBody
-	public HdkTicketSupport getstatusticket(@PathVariable("status") Character s) {
+	public HdkTicketSupport getstatusticket(@PathVariable("status") String s) {
 		return HdkTicket.getTicketByStatus(s);
 	}
 

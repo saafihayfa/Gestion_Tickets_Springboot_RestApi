@@ -11,6 +11,6 @@ import com.Hayfa.GestionTickets.entities.HdkTicketSupport;
 @Repository
 public interface HdkTicketSupportRepository extends JpaRepository<HdkTicketSupport, BigDecimal> {
 	
-	HdkTicketSupport findTicketByStatus(Character status) ;
+	HdkTicketSupport findTicketByStatus(String status) ;
 
 }
