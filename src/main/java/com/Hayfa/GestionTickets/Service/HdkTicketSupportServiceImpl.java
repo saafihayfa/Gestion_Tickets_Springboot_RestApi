@@ -59,4 +59,12 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 		return HdkTicket.findAll();
 	}
 
+	@Override
+	public List<HdkTicketSupport> chercherticket(String query) {
+	
+		List <HdkTicketSupport> tickets = HdkTicket.chercherticket(query) ;
+		
+		return tickets ;
+	}
+
 }

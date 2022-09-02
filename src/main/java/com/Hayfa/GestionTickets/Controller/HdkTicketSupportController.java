@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Hayfa.GestionTickets.Service.HdkTicketSupportService;
 import com.Hayfa.GestionTickets.entities.HdkTicketSupport;
 
-//@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 @RestController
 @RequestMapping("/api")
 public class HdkTicketSupportController {
@@ -30,7 +33,6 @@ public class HdkTicketSupportController {
 
 	@GetMapping("/hdkticket")
 	@ResponseBody
-    //@CrossOrigin(origins="http://localhost:8087/api/hdkticket")
 	public List<HdkTicketSupport> getAlltickets() {
 		List<HdkTicketSupport> list = HdkTicket.getAllTickets();
 		return list;
@@ -38,16 +40,10 @@ public class HdkTicketSupportController {
 
 	@GetMapping("hdkticket/{id}")
 	@ResponseBody
-	public Optional<HdkTicketSupport> getticket(@PathVariable("id") BigDecimal id) {
+	public Optional<HdkTicketSupport> getticket(@PathVariable BigDecimal id) {
 		return HdkTicket.getTicket(id);
-
 	}
-
-	@GetMapping("hdkticket/{status}")
-	@ResponseBody
-	public HdkTicketSupport getstatusticket(@PathVariable("status") String s) {
-		return HdkTicket.getTicketByStatus(s);
-	}
+	
 
 	@PostMapping("/addhdkticket")
 	@ResponseBody
@@ -71,5 +67,10 @@ public class HdkTicketSupportController {
 		HdkTicket.updateTicket(htk);
 		return htk;
 	}
-
+	
+	@GetMapping("/findticket")
+    public ResponseEntity<List<HdkTicketSupport>> findticket(@RequestParam("query") String query){
+        return ResponseEntity.ok(HdkTicket.chercherticket(query));
+    }
+	
 }

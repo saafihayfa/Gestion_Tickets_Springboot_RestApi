@@ -23,7 +23,8 @@ public interface HdkTicketSupportService {
 	
 	HdkTicketSupport getTicketByStatus (String s);
 	
-
-	List<HdkTicketSupport> getAllTickets();
+   List<HdkTicketSupport> getAllTickets();
+   
+   List<HdkTicketSupport> chercherticket(String query);
 
 }
