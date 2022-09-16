@@ -49,20 +49,20 @@ public class AuthController {
 	        }
 	        
 	        String jwt = jwtutil.generateToken(authRequest.getUserName());
-	        BigDecimal id = userrepository.findByUserName(authRequest.getUserName()).getIdUser();
-	        String name = userrepository.findByUserName(authRequest.getUserName()).getUserName();
-	        String mail = userrepository.findByUserName(authRequest.getUserName()).getUserMail();
-	        BigDecimal function = userrepository.findByUserName(authRequest.getUserName()).getUserFunction();
-	        String ville = userrepository.findByUserName(authRequest.getUserName()).getUserVille();
-	        BigDecimal  tel = userrepository.findByUserName(authRequest.getUserName()).getUserMobile();
-	        
-	        HdkUser  user = new HdkUser();
-	        user.setIdUser(id);
-	        user.setUserName(name);
-	        user.setUserMail(mail);
-	        user.setUserFunction(function);
-	        user.setUserVille(ville);
-	        user.setUserMobile(tel);
+//	        BigDecimal id = userrepository.findByUserName(authRequest.getUserName()).getIdUser();
+//	        String name = userrepository.findByUserName(authRequest.getUserName()).getUserName();
+//	        String mail = userrepository.findByUserName(authRequest.getUserName()).getUserMail();
+//	        BigDecimal function = userrepository.findByUserName(authRequest.getUserName()).getUserFunction();
+//	        String ville = userrepository.findByUserName(authRequest.getUserName()).getUserVille();
+//	        BigDecimal  tel = userrepository.findByUserName(authRequest.getUserName()).getUserMobile();
+//	        
+	        HdkUser  user = userrepository.findByUserName(authRequest.getUserName());
+//	        user.setIdUser(id);
+//	        user.setUserName(name);
+//	        user.setUserMail(mail);
+//	        user.setUserFunction(function);
+//	        user.setUserVille(ville);
+//	        user.setUserMobile(tel);
 	        user.settoken(jwt);
 	        
 	        return  user ;

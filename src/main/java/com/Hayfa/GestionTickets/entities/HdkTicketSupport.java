@@ -2,11 +2,16 @@ package com.Hayfa.GestionTickets.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,7 +26,11 @@ public class HdkTicketSupport implements java.io.Serializable {
 	private BigDecimal idTicket;
 	private BigDecimal version;
 	private BigDecimal idEntite;
-	private BigDecimal idUser;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private HdkUser idUser;
+	
 	private BigDecimal idTypeTicket;
 	private BigDecimal periorite;
 	private BigDecimal attributedTo;
@@ -36,7 +45,7 @@ public class HdkTicketSupport implements java.io.Serializable {
 	public HdkTicketSupport() {
 	}
 
-	public HdkTicketSupport(BigDecimal version, BigDecimal idEntite, BigDecimal idUser, BigDecimal idTypeTicket,
+	public HdkTicketSupport(BigDecimal version, BigDecimal idEntite, HdkUser idUser, BigDecimal idTypeTicket,
 			BigDecimal periorite, BigDecimal attributedTo, String title, String numTicket, String commentTicket,
 			String description, Date dtCreate, Date dtModif, String status) {
 		super();
@@ -74,11 +83,11 @@ public class HdkTicketSupport implements java.io.Serializable {
 	}
 
 	@Column(name = "ID_USER")
-	public BigDecimal getIdUser() {
+	public HdkUser getIdUser() {
 		return idUser;
 	}
 
-	public void setIdUser(BigDecimal idUser) {
+	public void setIdUser(HdkUser idUser) {
 		this.idUser = idUser;
 	}
 

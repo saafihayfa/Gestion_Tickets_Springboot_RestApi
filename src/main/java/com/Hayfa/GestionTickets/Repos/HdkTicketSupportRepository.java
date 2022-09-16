@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.Hayfa.GestionTickets.entities.HdkTicketSupport;
+import com.Hayfa.GestionTickets.entities.HdkUser;
 
 
 @Repository
@@ -18,4 +19,16 @@ public interface HdkTicketSupportRepository extends JpaRepository<HdkTicketSuppo
 	 @Query("SELECT t FROM HdkTicketSupport t WHERE " +
 	            "t.status LIKE CONCAT('%',:query, '%')" + " Or t.title LIKE CONCAT('%',:query, '%')" )
 	 List<HdkTicketSupport> chercherticket(String query);
+	
+	 @Query (" SELECT rt FROM  HdkTicketSupport rt WHERE rt.attributedTo = 75 " )
+	 List <HdkTicketSupport> received_ticket( );
+	 
+	 @Query (" SELECT st FROM  HdkTicketSupport st WHERE st.attributedTo != 75 and  st.idUser = 75 " )
+	 List <HdkTicketSupport> sent_ticket( );
+	 
+	 @Query (" SELECT ot FROM HdkTicketSupport ot WHERE ot.attributedTo !=75 and ot.idUser != 75  ")
+	 List <HdkTicketSupport> others_ticket();
+	 
+	 
+	 
 }

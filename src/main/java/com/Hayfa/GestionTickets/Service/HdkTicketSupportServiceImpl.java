@@ -61,8 +61,32 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 
 	@Override
 	public List<HdkTicketSupport> chercherticket(String query) {
-	
-		List <HdkTicketSupport> tickets = HdkTicket.chercherticket(query) ;
+
+		List<HdkTicketSupport> tickets = HdkTicket.chercherticket(query);
+
+		return tickets;
+	}
+
+	@Override
+	public List<HdkTicketSupport> received_ticket() {
+
+		List<HdkTicketSupport> tickets = HdkTicket.received_ticket();
+
+		return tickets;
+	}
+
+	@Override
+	public List<HdkTicketSupport> sent_ticket() {
+
+		List<HdkTicketSupport> tickets = HdkTicket.sent_ticket();
+
+		return tickets;
+	}
+
+	@Override
+	public List<HdkTicketSupport> others_ticket() {
+		 
+		List <HdkTicketSupport> tickets = HdkTicket.others_ticket();
 		
 		return tickets ;
 	}

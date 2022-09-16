@@ -26,5 +26,11 @@ public interface HdkTicketSupportService {
    List<HdkTicketSupport> getAllTickets();
    
    List<HdkTicketSupport> chercherticket(String query);
+   
+   List <HdkTicketSupport> received_ticket();
+   
+   List <HdkTicketSupport> sent_ticket( );
+   
+   List <HdkTicketSupport> others_ticket();
 
 }

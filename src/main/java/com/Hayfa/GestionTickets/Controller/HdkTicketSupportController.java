@@ -73,4 +73,21 @@ public class HdkTicketSupportController {
         return ResponseEntity.ok(HdkTicket.chercherticket(query));
     }
 	
+	@GetMapping("/receivedticket")
+    public ResponseEntity<List<HdkTicketSupport>> receivedticket(){
+        return ResponseEntity.ok(HdkTicket.received_ticket());
+    }
+	
+	
+	@GetMapping("/sentticket")
+    public ResponseEntity<List<HdkTicketSupport>> sentticket(){
+        return ResponseEntity.ok(HdkTicket.sent_ticket());
+    }
+	
+	@GetMapping("/othersticket")
+    public ResponseEntity<List<HdkTicketSupport>> othersticket(){
+        return ResponseEntity.ok(HdkTicket.others_ticket());
+    }
+	
+	
 }
