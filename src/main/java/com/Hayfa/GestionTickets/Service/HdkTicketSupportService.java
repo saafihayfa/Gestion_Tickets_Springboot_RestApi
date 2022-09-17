@@ -32,5 +32,9 @@ public interface HdkTicketSupportService {
    List <HdkTicketSupport> sent_ticket( );
    
    List <HdkTicketSupport> others_ticket();
+   
+   List <HdkTicketSupport> notaff_ticket ();
+   
+   List <HdkTicketSupport> resolved_ticket ();
 
 }

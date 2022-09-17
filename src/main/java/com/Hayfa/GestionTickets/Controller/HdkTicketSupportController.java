@@ -89,5 +89,19 @@ public class HdkTicketSupportController {
         return ResponseEntity.ok(HdkTicket.others_ticket());
     }
 	
+	@GetMapping("/notaffec_ticket")
+    public ResponseEntity<List<HdkTicketSupport>> notaffec_ticket(){
+        return ResponseEntity.ok(HdkTicket.notaff_ticket());
+    }
+	
+	
+	@GetMapping("/resolved_ticket")
+    public ResponseEntity<List<HdkTicketSupport>> resolved_ticket(){
+        return ResponseEntity.ok(HdkTicket.resolved_ticket());
+    }
+	
+	
+	
+	
 	
 }

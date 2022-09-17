@@ -85,10 +85,27 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 
 	@Override
 	public List<HdkTicketSupport> others_ticket() {
-		 
-		List <HdkTicketSupport> tickets = HdkTicket.others_ticket();
-		
-		return tickets ;
+
+		List<HdkTicketSupport> tickets = HdkTicket.others_ticket();
+
+		return tickets;
+	}
+
+	@Override
+	public List<HdkTicketSupport> notaff_ticket() {
+
+		List<HdkTicketSupport> tickets = HdkTicket.notaff_ticket();
+
+		return tickets;
+	}
+
+	@Override
+	public List<HdkTicketSupport> resolved_ticket() {
+
+		List<HdkTicketSupport> tickets = HdkTicket.resolved_ticket();
+
+		return tickets;
+
 	}
 
 }
