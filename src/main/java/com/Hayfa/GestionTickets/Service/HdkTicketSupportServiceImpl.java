@@ -108,4 +108,20 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 
 	}
 
+	@Override
+	public List<HdkTicketSupport> findTicketByAttributedTo(BigDecimal x) {
+
+		List<HdkTicketSupport> tickets = HdkTicket.findTicketByAttributedTo(x);
+
+		return tickets;
+	}
+
+	@Override
+	public List<HdkTicketSupport> findTicketByidUser(BigDecimal x) {
+
+		List<HdkTicketSupport> tickets = HdkTicket.findTicketByidUser(x);
+
+		return tickets;
+	}
+
 }

@@ -20,21 +20,25 @@ public interface HdkTicketSupportService {
 	void deleteTicketById(BigDecimal id);
 
 	Optional<HdkTicketSupport> getTicket(BigDecimal id);
-	
-	HdkTicketSupport getTicketByStatus (String s);
-	
-   List<HdkTicketSupport> getAllTickets();
-   
-   List<HdkTicketSupport> chercherticket(String query);
-   
-   List <HdkTicketSupport> received_ticket();
-   
-   List <HdkTicketSupport> sent_ticket( );
-   
-   List <HdkTicketSupport> others_ticket();
-   
-   List <HdkTicketSupport> notaff_ticket ();
-   
-   List <HdkTicketSupport> resolved_ticket ();
+
+	HdkTicketSupport getTicketByStatus(String s);
+
+	List<HdkTicketSupport> findTicketByAttributedTo(BigDecimal x);
+
+	List<HdkTicketSupport> findTicketByidUser(BigDecimal x);
+
+	List<HdkTicketSupport> getAllTickets();
+
+	List<HdkTicketSupport> chercherticket(String query);
+
+	List<HdkTicketSupport> received_ticket();
+
+	List<HdkTicketSupport> sent_ticket();
+
+	List<HdkTicketSupport> others_ticket();
+
+	List<HdkTicketSupport> notaff_ticket();
+
+	List<HdkTicketSupport> resolved_ticket();
 
 }

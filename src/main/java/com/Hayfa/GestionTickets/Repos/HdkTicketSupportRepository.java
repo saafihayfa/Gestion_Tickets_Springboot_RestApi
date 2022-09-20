@@ -16,17 +16,22 @@ public interface HdkTicketSupportRepository extends JpaRepository<HdkTicketSuppo
 	
 	HdkTicketSupport findTicketByStatus(String status) ;
 	
+	List<HdkTicketSupport> findTicketByAttributedTo(BigDecimal x) ;
+	
+	List<HdkTicketSupport> findTicketByidUser(BigDecimal x);
+
+	
 	 @Query("SELECT t FROM HdkTicketSupport t WHERE " +
 	            "t.status LIKE CONCAT('%',:query, '%')" + " Or t.title LIKE CONCAT('%',:query, '%')" )
 	 List<HdkTicketSupport> chercherticket(String query);
 	
-	 @Query (" SELECT rec FROM  HdkTicketSupport rec WHERE rec.attributedTo = 75 " )
+	 @Query (" SELECT rec FROM  HdkTicketSupport rec WHERE rec.attributedTo = rec.idUser " )
 	 List <HdkTicketSupport> received_ticket( );
 	 
-	 @Query (" SELECT snt FROM  HdkTicketSupport snt WHERE snt.idUser = 75 and snt.attributedTo != 75   " )
+	 @Query (" SELECT snt FROM  HdkTicketSupport snt WHERE snt.attributedTo != snt.idUser  " )
 	 List <HdkTicketSupport> sent_ticket( );
 	 
-	 @Query (" SELECT oth FROM HdkTicketSupport oth WHERE oth.attributedTo != 75 and oth.idUser != 75  ")
+	 @Query (" SELECT oth FROM HdkTicketSupport oth WHERE oth.attributedTo != oth.idUser and oth.idUser != 75 ")
 	 List <HdkTicketSupport> others_ticket();
 	 
 	 @Query (" SELECT naf FROM HdkTicketSupport naf WHERE naf.attributedTo = null  ")
