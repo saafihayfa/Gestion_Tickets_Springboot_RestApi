@@ -1,6 +1,8 @@
 package com.Hayfa.GestionTickets.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,10 +40,5 @@ public class HdkUserServiceImpl implements HdkUserService {
 		return userrepo.findByuserMail(userMail);
 	}
 
-	//@Override
-	//public Boolean existsByuserMail(String userMail) {
-
-	//	return null;
-	//}
-
+	
 }

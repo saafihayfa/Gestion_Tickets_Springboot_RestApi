@@ -63,6 +63,8 @@ public class HdkTicketSupport implements java.io.Serializable {
 		this.dtModif = dtModif;
 		this.status = status;
 	}
+	
+	
 
 	@Column(name = "ID_TICKET", nullable = false, precision = 22, scale = 0)
 	public BigDecimal getIdTicket() {
@@ -86,6 +88,7 @@ public class HdkTicketSupport implements java.io.Serializable {
 	public HdkUser getIdUser() {
 		return idUser;
 	}
+	
 
 	public void setIdUser(HdkUser idUser) {
 		this.idUser = idUser;

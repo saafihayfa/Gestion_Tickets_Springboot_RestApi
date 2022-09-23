@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.Hayfa.GestionTickets.entities.HdkTicketSupport;
+import com.Hayfa.GestionTickets.entities.HdkUser;
 
 @Service
 public interface HdkTicketSupportService {
@@ -25,7 +26,7 @@ public interface HdkTicketSupportService {
 
 	List<HdkTicketSupport> findTicketByAttributedTo(BigDecimal x);
 
-	List<HdkTicketSupport> findTicketByidUser(BigDecimal x);
+	List<HdkTicketSupport> findTicketByidUser(HdkUser idUser);
 
 	List<HdkTicketSupport> getAllTickets();
 
@@ -40,5 +41,9 @@ public interface HdkTicketSupportService {
 	List<HdkTicketSupport> notaff_ticket();
 
 	List<HdkTicketSupport> resolved_ticket();
+
+	//List<HdkTicketSupport> findTicketByidUser(BigDecimal x);
+
+	
 
 }

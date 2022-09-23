@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Hayfa.GestionTickets.Repos.HdkTicketSupportRepository;
+import com.Hayfa.GestionTickets.Repos.HdkUserRepository;
 import com.Hayfa.GestionTickets.entities.HdkTicketSupport;
+import com.Hayfa.GestionTickets.entities.HdkUser;
 
 @Service
 public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 
 	@Autowired
 	HdkTicketSupportRepository HdkTicket;
+	
+	@Autowired
+	HdkUserRepository userrepo;
 
 	@Override
 	public HdkTicketSupport saveTicket(HdkTicketSupport t) {
@@ -117,11 +122,16 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 	}
 
 	@Override
-	public List<HdkTicketSupport> findTicketByidUser(BigDecimal x) {
+	public List<HdkTicketSupport> findTicketByidUser(HdkUser x) {
+		
+		
 
 		List<HdkTicketSupport> tickets = HdkTicket.findTicketByidUser(x);
 
 		return tickets;
 	}
+
+	
+	
 
 }

@@ -11,10 +11,10 @@ import com.Hayfa.GestionTickets.entities.HdkUser;
 @Repository
 public interface HdkUserRepository extends JpaRepository<HdkUser, BigDecimal> {
 
-	// Boolean existsByuserMail(String userMail);
+	HdkUser findByuserMail(String userMail);
 
-	 HdkUser findByuserMail(String userMail);
+	HdkUser findByUserName(String userName);
 
-	 HdkUser findByUserName(String userName);
+	
 
 }

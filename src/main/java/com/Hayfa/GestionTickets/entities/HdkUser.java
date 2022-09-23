@@ -46,8 +46,9 @@ public class HdkUser implements java.io.Serializable {
 	public HdkUser() {
 	}
 
-	public HdkUser(String userName, String userPwd, String userMail) {
-		this.idUser = idUser;this.userName = userName;
+	public HdkUser( BigDecimal idUser,String userName, String userPwd, String userMail) {
+		this.idUser = idUser;
+		this.userName = userName;
 		this.userPwd = userPwd;
 		this.userMail = userMail;
 
@@ -82,6 +83,7 @@ public class HdkUser implements java.io.Serializable {
 	public BigDecimal getIdUser() {
 		return idUser;
 	}
+	
 
 	public void setIdUser(BigDecimal idUser) {
 		this.idUser = idUser;

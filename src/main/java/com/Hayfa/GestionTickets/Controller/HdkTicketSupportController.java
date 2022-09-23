@@ -28,18 +28,13 @@ import com.Hayfa.GestionTickets.Service.HdkTicketSupportService;
 import com.Hayfa.GestionTickets.entities.HdkTicketSupport;
 import com.Hayfa.GestionTickets.entities.HdkUser;
 
-
 @RestController
 @RequestMapping("/api")
 public class HdkTicketSupportController {
-	
-	@Autowired
-	HdkUserRepository userrepository ;
 
 	@Autowired
-	HdkTicketSupportRepository ticketepository ;
-	
-	
+	HdkUserRepository userrepository;
+
 	@Autowired
 	HdkTicketSupportService HdkTicket;
 
@@ -55,7 +50,6 @@ public class HdkTicketSupportController {
 	public Optional<HdkTicketSupport> getticket(@PathVariable BigDecimal id) {
 		return HdkTicket.getTicket(id);
 	}
-	
 
 	@PostMapping("/addhdkticket")
 	@ResponseBody
@@ -79,17 +73,12 @@ public class HdkTicketSupportController {
 		HdkTicket.updateTicket(htk);
 		return htk;
 	}
-	
+
 	@GetMapping("/findticket")
-    public ResponseEntity<List<HdkTicketSupport>> findticket(@RequestParam("query") String query){
-        return ResponseEntity.ok(HdkTicket.chercherticket(query));
-    }
-	
-//	@GetMapping("/receivedticket")
-//   public ResponseEntity<List<HdkTicketSupport>> receivedticket(){
-//        return ResponseEntity.ok(HdkTicket.received_ticket());
-//  }
-	
+	public ResponseEntity<List<HdkTicketSupport>> findticket(@RequestParam("query") String query) {
+		return ResponseEntity.ok(HdkTicket.chercherticket(query));
+	}
+
 	@RequestMapping(value = "/receivedticket", method = RequestMethod.GET)
 	public List<HdkTicketSupport> receivedticket() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -98,50 +87,37 @@ public class HdkTicketSupportController {
 		List<HdkTicketSupport> results = HdkTicket.findTicketByAttributedTo(idUser);
 
 		System.out.println(results.toString());
-	
-			return results;
-		
-	}
-	
-	
-		@GetMapping("/sentticket")
-   public ResponseEntity<List<HdkTicketSupport>> sentticket(){
-       return ResponseEntity.ok(HdkTicket.sent_ticket());
-   }
-	
-//	@RequestMapping(value = "/sentticket", method = RequestMethod.GET)
-//	public List<HdkTicketSupport> sentticket() {
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		UserDetails authUser = (UserDetails) principal;
-//		BigDecimal idUser = userrepository.findByUserName(authUser.getUsername()).getIdUser();
-//		List<HdkTicketSupport> results = HdkTicket.findTicketByidUser(idUser);
-//
-//		System.out.println(results.toString());
-//	
-//			return results;
-//		
-//	}
-//	
 
-	
+		return results;
+
+	}
+
+	@RequestMapping(value = "/sentticket", method = RequestMethod.GET)
+	public List<HdkTicketSupport> sentticket() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails authUser = (UserDetails) principal;
+		HdkUser idUser = userrepository.findByUserName(authUser.getUsername());
+
+		List<HdkTicketSupport> results = HdkTicket.findTicketByidUser(idUser);
+
+		System.out.println(results.toString());
+		return results;
+
+	}
+
 	@GetMapping("/othersticket")
-    public ResponseEntity<List<HdkTicketSupport>> othersticket(){
-        return ResponseEntity.ok(HdkTicket.others_ticket());
-    }
-	
+	public ResponseEntity<List<HdkTicketSupport>> othersticket() {
+		return ResponseEntity.ok(HdkTicket.others_ticket());
+	}
+
 	@GetMapping("/notaffec_ticket")
-    public ResponseEntity<List<HdkTicketSupport>> notaffec_ticket(){
-        return ResponseEntity.ok(HdkTicket.notaff_ticket());
-    }
-	
-	
+	public ResponseEntity<List<HdkTicketSupport>> notaffec_ticket() {
+		return ResponseEntity.ok(HdkTicket.notaff_ticket());
+	}
+
 	@GetMapping("/resolved_ticket")
-    public ResponseEntity<List<HdkTicketSupport>> resolved_ticket(){
-        return ResponseEntity.ok(HdkTicket.resolved_ticket());
-    }
-	
-	
-	
-	
-	
+	public ResponseEntity<List<HdkTicketSupport>> resolved_ticket() {
+		return ResponseEntity.ok(HdkTicket.resolved_ticket());
+	}
+
 }

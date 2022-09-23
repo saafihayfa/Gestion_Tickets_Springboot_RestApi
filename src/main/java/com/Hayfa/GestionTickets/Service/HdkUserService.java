@@ -1,5 +1,6 @@
 package com.Hayfa.GestionTickets.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.Hayfa.GestionTickets.entities.HdkUser;
@@ -11,8 +12,6 @@ public interface HdkUserService {
 	HdkUser getUser(String username);
 
 	HdkUser getuserMail(String userMail);
-
-    //Boolean existsByuserMail(String userMail);
 
 	List<HdkUser> getUsers();
 
