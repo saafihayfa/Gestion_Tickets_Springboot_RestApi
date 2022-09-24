@@ -36,14 +36,18 @@ public interface HdkTicketSupportService {
 
 	List<HdkTicketSupport> sent_ticket();
 
-	List<HdkTicketSupport> others_ticket();
-
 	List<HdkTicketSupport> notaff_ticket();
 
 	List<HdkTicketSupport> resolved_ticket();
+	
+	List<HdkTicketSupport> pending_ticket();
+	
+	List<HdkTicketSupport> progress_ticket();
+	
+	List<HdkTicketSupport> test_ticket();
 
-	//List<HdkTicketSupport> findTicketByidUser(BigDecimal x);
-
+	
+	//List<HdkTicketSupport> others_ticket();
 	
 
 }

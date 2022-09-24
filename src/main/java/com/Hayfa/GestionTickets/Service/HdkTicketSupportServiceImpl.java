@@ -17,7 +17,7 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 
 	@Autowired
 	HdkTicketSupportRepository HdkTicket;
-	
+
 	@Autowired
 	HdkUserRepository userrepo;
 
@@ -89,14 +89,6 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 	}
 
 	@Override
-	public List<HdkTicketSupport> others_ticket() {
-
-		List<HdkTicketSupport> tickets = HdkTicket.others_ticket();
-
-		return tickets;
-	}
-
-	@Override
 	public List<HdkTicketSupport> notaff_ticket() {
 
 		List<HdkTicketSupport> tickets = HdkTicket.notaff_ticket();
@@ -123,15 +115,46 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 
 	@Override
 	public List<HdkTicketSupport> findTicketByidUser(HdkUser x) {
-		
-		
 
 		List<HdkTicketSupport> tickets = HdkTicket.findTicketByidUser(x);
 
 		return tickets;
 	}
 
-	
-	
+	@Override
+	public List<HdkTicketSupport> pending_ticket() {
+
+		List<HdkTicketSupport> tickets = HdkTicket.pending_ticket();
+
+		return tickets;
+
+	}
+
+	@Override
+	public List<HdkTicketSupport> progress_ticket() {
+
+		List<HdkTicketSupport> tickets = HdkTicket.progress_ticket();
+
+		return tickets;
+
+	}
+
+	@Override
+	public List<HdkTicketSupport> test_ticket() {
+
+		List<HdkTicketSupport> tickets = HdkTicket.test_ticket();
+
+		return tickets;
+
+	}
+
+//	@Override
+//	public List<HdkTicketSupport> others_ticket() {
+//
+//		List<HdkTicketSupport> tickets = HdkTicket.others_ticket();
+//
+//		return tickets;
+//	}
+//	
 
 }

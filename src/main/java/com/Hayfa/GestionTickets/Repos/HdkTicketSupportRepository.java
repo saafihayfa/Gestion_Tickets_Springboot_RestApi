@@ -29,13 +29,23 @@ public interface HdkTicketSupportRepository extends JpaRepository<HdkTicketSuppo
 	@Query(" SELECT snt FROM  HdkTicketSupport snt WHERE snt.attributedTo != snt.idUser  ")
 	List<HdkTicketSupport> sent_ticket();
 
-	@Query(" SELECT oth FROM HdkTicketSupport oth WHERE  oth.attributedTo != oth.idUser ")
-	List<HdkTicketSupport> others_ticket();
-
 	@Query(" SELECT naf FROM HdkTicketSupport naf WHERE naf.attributedTo = null  ")
 	List<HdkTicketSupport> notaff_ticket();
 
 	@Query(" SELECT res FROM HdkTicketSupport res WHERE res.status = 'resolved'  ")
 	List<HdkTicketSupport> resolved_ticket();
+	
+	@Query(" SELECT pen FROM HdkTicketSupport pen WHERE pen.status = 'pending'  ")
+	List<HdkTicketSupport> pending_ticket();
+	
+	@Query(" SELECT pro FROM HdkTicketSupport pro WHERE pro.status = 'in progress'  ")
+	List<HdkTicketSupport> progress_ticket();
+	
+	@Query(" SELECT tst FROM HdkTicketSupport tst WHERE tst.status = 'in test'  ")
+	List<HdkTicketSupport> test_ticket();
+
+	
+	// @Query(" SELECT oth FROM HdkTicketSupport oth WHERE oth.attributedTo != oth.idUser ")
+	// List<HdkTicketSupport> others_ticket();
 
 }

@@ -105,11 +105,6 @@ public class HdkTicketSupportController {
 
 	}
 
-	@GetMapping("/othersticket")
-	public ResponseEntity<List<HdkTicketSupport>> othersticket() {
-		return ResponseEntity.ok(HdkTicket.others_ticket());
-	}
-
 	@GetMapping("/notaffec_ticket")
 	public ResponseEntity<List<HdkTicketSupport>> notaffec_ticket() {
 		return ResponseEntity.ok(HdkTicket.notaff_ticket());
@@ -119,5 +114,25 @@ public class HdkTicketSupportController {
 	public ResponseEntity<List<HdkTicketSupport>> resolved_ticket() {
 		return ResponseEntity.ok(HdkTicket.resolved_ticket());
 	}
+
+	@GetMapping("/pending_ticket")
+	public ResponseEntity<List<HdkTicketSupport>> pending_ticket() {
+		return ResponseEntity.ok(HdkTicket.pending_ticket());
+	}
+
+	@GetMapping("/progress_ticket")
+	public ResponseEntity<List<HdkTicketSupport>> progress_ticket() {
+		return ResponseEntity.ok(HdkTicket.progress_ticket());
+	}
+
+	@GetMapping("/test_ticket")
+	public ResponseEntity<List<HdkTicketSupport>> test_ticket() {
+		return ResponseEntity.ok(HdkTicket.test_ticket());
+	}
+
+//	@GetMapping("/othersticket")
+//	public ResponseEntity<List<HdkTicketSupport>> othersticket() {
+//		return ResponseEntity.ok(HdkTicket.others_ticket());
+//	}
 
 }
