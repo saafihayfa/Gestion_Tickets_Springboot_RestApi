@@ -1,5 +1,6 @@
 package com.Hayfa.GestionTickets.Controller;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 
@@ -49,5 +50,14 @@ public class HdkUserController {
 		return ResponseEntity.created(uri).body(userservice.SaveUser(u));
 
 	}
+	
+	@GetMapping("/getAllId")
+	public ResponseEntity<List<BigDecimal>> getAllId() {
+
+		return ResponseEntity.ok().body(userservice.getAllId());
+
+	}
+	
+	
 
 }

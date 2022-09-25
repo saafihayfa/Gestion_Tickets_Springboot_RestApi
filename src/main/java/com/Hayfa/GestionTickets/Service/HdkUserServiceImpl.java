@@ -40,5 +40,11 @@ public class HdkUserServiceImpl implements HdkUserService {
 		return userrepo.findByuserMail(userMail);
 	}
 
+	@Override
+	public List<BigDecimal> getAllId() {
+		
+		return userrepo.getAllId();
+	}
+
 	
 }

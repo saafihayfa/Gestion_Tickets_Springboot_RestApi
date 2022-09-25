@@ -14,5 +14,7 @@ public interface HdkUserService {
 	HdkUser getuserMail(String userMail);
 
 	List<HdkUser> getUsers();
+	
+	List<BigDecimal> getAllId(); 
 
 }
