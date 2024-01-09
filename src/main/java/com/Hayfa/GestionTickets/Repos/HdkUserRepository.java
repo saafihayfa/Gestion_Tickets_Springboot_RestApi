@@ -20,6 +20,4 @@ public interface HdkUserRepository extends JpaRepository<HdkUser, BigDecimal> {
 	@Query(" SELECT idUser FROM  HdkUser" )
 	List<BigDecimal> getAllId(); 
 
-	
-
 }

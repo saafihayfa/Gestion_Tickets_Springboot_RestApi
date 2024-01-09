@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.Hayfa.GestionTickets.Repos.HdkUserRepository;
@@ -12,12 +13,19 @@ import com.Hayfa.GestionTickets.entities.HdkUser;
 
 @Service
 public class HdkUserServiceImpl implements HdkUserService {
+	
+	 @Autowired
+	 private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	HdkUserRepository userrepo;
 
 	@Override
 	public HdkUser SaveUser(HdkUser user) {
+		
+        String pass = user.getUserPwd();
+
+        user.setUserPwd(passwordEncoder.encode(pass));
 
 		return userrepo.save(user);
 	}
