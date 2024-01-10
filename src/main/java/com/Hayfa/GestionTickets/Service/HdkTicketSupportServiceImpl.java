@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.Hayfa.GestionTickets.Repos.HdkTicketSupportRepository;
@@ -22,11 +25,23 @@ public class HdkTicketSupportServiceImpl implements HdkTicketSupportService {
 	HdkUserRepository userrepo;
 
 	@Override
-	public HdkTicketSupport saveTicket(HdkTicketSupport t) {
+	public HdkTicketSupport saveTicket(HdkTicketSupport newTicket) {
+	        // Obtenir l'authentification de l'utilisateur connecté
+	        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		return HdkTicket.save(t);
-	}
+	        UserDetails loggedInUser = (UserDetails) authentication.getPrincipal();
+	        BigDecimal idUser = userrepo.findByUserName(loggedInUser.getUsername()).getIdUser();
 
+	        // Associer l'utilisateur connecté au ticket
+	        HdkUser loggedInUserEntity = new HdkUser();
+	        loggedInUserEntity.setIdUser(idUser);
+	        newTicket.setIdUser(loggedInUserEntity);
+
+	        // Enregistrer le ticket dans la base de données
+	        userrepo.save(newTicket);
+			return newTicket;
+	    }
+	
 	@Override
 	public HdkTicketSupport updateTicket(HdkTicketSupport t) {
 

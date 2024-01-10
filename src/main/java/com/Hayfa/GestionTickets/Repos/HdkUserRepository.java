@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.Hayfa.GestionTickets.entities.HdkTicketSupport;
 import com.Hayfa.GestionTickets.entities.HdkUser;
 
 @Repository
@@ -18,6 +19,8 @@ public interface HdkUserRepository extends JpaRepository<HdkUser, BigDecimal> {
 	HdkUser findByUserName(String userName);
 	
 	@Query(" SELECT idUser FROM  HdkUser" )
-	List<BigDecimal> getAllId(); 
+	List<BigDecimal> getAllId();
+
+	void save(HdkTicketSupport newTicket); 
 
 }

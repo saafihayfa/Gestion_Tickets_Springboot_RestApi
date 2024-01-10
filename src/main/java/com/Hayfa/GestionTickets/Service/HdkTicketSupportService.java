@@ -12,7 +12,6 @@ import com.Hayfa.GestionTickets.entities.HdkUser;
 @Service
 public interface HdkTicketSupportService {
 
-	HdkTicketSupport saveTicket(HdkTicketSupport t);
 
 	HdkTicketSupport updateTicket(HdkTicketSupport t);
 
@@ -45,6 +44,8 @@ public interface HdkTicketSupportService {
 	List<HdkTicketSupport> progress_ticket();
 	
 	List<HdkTicketSupport> test_ticket();
+
+	HdkTicketSupport saveTicket(HdkTicketSupport newTicket);
 
 	
 	//List<HdkTicketSupport> others_ticket();

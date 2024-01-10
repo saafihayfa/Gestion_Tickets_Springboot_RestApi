@@ -1,9 +1,8 @@
 package com.Hayfa.GestionTickets.Controller;
 
-import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.Hayfa.GestionTickets.entities.AuthRequest;
+
 import com.Hayfa.GestionTickets.entities.HdkUser;
 import com.Hayfa.GestionTickets.Config.jwtutil;
 import com.Hayfa.GestionTickets.Repos.HdkUserRepository;
@@ -38,7 +37,6 @@ public class AuthController {
      
 	
 	 @PostMapping("/authenticate")
-	 //@CrossOrigin(origins="http://localhost:8087/api/authenticate")
 	    public HdkUser generateToken(@RequestBody HdkUser authRequest) throws Exception {
 	        try {
 	            authenticationManager.authenticate(
@@ -49,20 +47,9 @@ public class AuthController {
 	        }
 	        
 	        String jwt = jwtutil.generateToken(authRequest.getUserName());
-//	        BigDecimal id = userrepository.findByUserName(authRequest.getUserName()).getIdUser();
-//	        String name = userrepository.findByUserName(authRequest.getUserName()).getUserName();
-//	        String mail = userrepository.findByUserName(authRequest.getUserName()).getUserMail();
-//	        BigDecimal function = userrepository.findByUserName(authRequest.getUserName()).getUserFunction();
-//	        String ville = userrepository.findByUserName(authRequest.getUserName()).getUserVille();
-//	        BigDecimal  tel = userrepository.findByUserName(authRequest.getUserName()).getUserMobile();
-//	        
+
 	        HdkUser  user = userrepository.findByUserName(authRequest.getUserName());
-//	        user.setIdUser(id);
-//	        user.setUserName(name);
-//	        user.setUserMail(mail);
-//	        user.setUserFunction(function);
-//	        user.setUserVille(ville);
-//	        user.setUserMobile(tel);
+
 	        user.settoken(jwt);
 	        
 	        return  user ;
