@@ -23,10 +23,10 @@ public interface HdkTicketSupportRepository extends JpaRepository<HdkTicketSuppo
 			+ " Or t.title LIKE CONCAT('%',:query, '%')")
 	List<HdkTicketSupport> chercherticket(String query);
 
-	@Query(" SELECT rec FROM  HdkTicketSupport rec WHERE rec.attributedTo = rec.idUser ")
+	@Query(" SELECT rec FROM  HdkTicketSupport rec  ")
 	List<HdkTicketSupport> received_ticket();
 
-	@Query(" SELECT snt FROM  HdkTicketSupport snt WHERE snt.attributedTo != snt.idUser  ")
+	@Query(" SELECT snt FROM  HdkTicketSupport snt  ")
 	List<HdkTicketSupport> sent_ticket();
 
 	@Query(" SELECT naf FROM HdkTicketSupport naf WHERE naf.attributedTo = null  ")
